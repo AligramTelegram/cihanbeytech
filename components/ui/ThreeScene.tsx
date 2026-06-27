@@ -68,88 +68,88 @@ export default function ThreeScene() {
       const barH = 30;
       const alpha = f.opacity;
 
-      ctx.save();
+      ctx!.save();
 
       // glow
-      ctx.shadowColor = "rgba(124,58,237,0.4)";
-      ctx.shadowBlur = 20;
+      ctx!.shadowColor = "rgba(124,58,237,0.4)";
+      ctx!.shadowBlur = 20;
 
       // body
-      ctx.beginPath();
-      ctx.roundRect(bx, by, w, h, r);
-      ctx.fillStyle = `rgba(8,6,14,${alpha})`;
-      ctx.fill();
-      ctx.shadowBlur = 0;
+      ctx!.beginPath();
+      ctx!.roundRect(bx, by, w, h, r);
+      ctx!.fillStyle = `rgba(8,6,14,${alpha})`;
+      ctx!.fill();
+      ctx!.shadowBlur = 0;
 
       // border
-      ctx.beginPath();
-      ctx.roundRect(bx, by, w, h, r);
-      ctx.strokeStyle = `rgba(124,58,237,${alpha * 0.7})`;
-      ctx.lineWidth = 1;
-      ctx.stroke();
+      ctx!.beginPath();
+      ctx!.roundRect(bx, by, w, h, r);
+      ctx!.strokeStyle = `rgba(124,58,237,${alpha * 0.7})`;
+      ctx!.lineWidth = 1;
+      ctx!.stroke();
 
       // top bar
-      ctx.save();
-      ctx.beginPath();
-      ctx.roundRect(bx, by, w, barH, [r, r, 0, 0]);
-      ctx.fillStyle = `rgba(20,14,35,${alpha})`;
-      ctx.fill();
-      ctx.restore();
+      ctx!.save();
+      ctx!.beginPath();
+      ctx!.roundRect(bx, by, w, barH, [r, r, 0, 0]);
+      ctx!.fillStyle = `rgba(20,14,35,${alpha})`;
+      ctx!.fill();
+      ctx!.restore();
 
       // separator line
-      ctx.beginPath();
-      ctx.moveTo(bx, by + barH);
-      ctx.lineTo(bx + w, by + barH);
-      ctx.strokeStyle = `rgba(124,58,237,${alpha * 0.3})`;
-      ctx.lineWidth = 0.5;
-      ctx.stroke();
+      ctx!.beginPath();
+      ctx!.moveTo(bx, by + barH);
+      ctx!.lineTo(bx + w, by + barH);
+      ctx!.strokeStyle = `rgba(124,58,237,${alpha * 0.3})`;
+      ctx!.lineWidth = 0.5;
+      ctx!.stroke();
 
       // traffic dots
       ["#ff5f56","#ffbd2e","#27c93f"].forEach((c, i) => {
-        ctx.beginPath();
-        ctx.arc(bx + 14 + i * 14, by + barH / 2, 4, 0, Math.PI * 2);
-        ctx.fillStyle = c;
-        ctx.globalAlpha = alpha;
-        ctx.fill();
-        ctx.globalAlpha = 1;
+        ctx!.beginPath();
+        ctx!.arc(bx + 14 + i * 14, by + barH / 2, 4, 0, Math.PI * 2);
+        ctx!.fillStyle = c;
+        ctx!.globalAlpha = alpha;
+        ctx!.fill();
+        ctx!.globalAlpha = 1;
       });
 
       // url bar
-      ctx.beginPath();
-      ctx.roundRect(bx + 56, by + 7, w - 66, 16, 4);
-      ctx.fillStyle = `rgba(255,255,255,${alpha * 0.05})`;
-      ctx.fill();
-      ctx.beginPath();
-      ctx.roundRect(bx + 56, by + 7, w - 66, 16, 4);
-      ctx.strokeStyle = `rgba(255,255,255,${alpha * 0.08})`;
-      ctx.lineWidth = 0.5;
-      ctx.stroke();
+      ctx!.beginPath();
+      ctx!.roundRect(bx + 56, by + 7, w - 66, 16, 4);
+      ctx!.fillStyle = `rgba(255,255,255,${alpha * 0.05})`;
+      ctx!.fill();
+      ctx!.beginPath();
+      ctx!.roundRect(bx + 56, by + 7, w - 66, 16, 4);
+      ctx!.strokeStyle = `rgba(255,255,255,${alpha * 0.08})`;
+      ctx!.lineWidth = 0.5;
+      ctx!.stroke();
 
       // content lines
       const lineY = by + barH + 14;
       const lines = [0.7, 0.45, 0.8, 0.35, 0.6];
       lines.forEach((lw, i) => {
         if (lineY + i * 16 + 7 > by + h - 10) return;
-        ctx.beginPath();
-        ctx.roundRect(bx + 14, lineY + i * 16, (w - 28) * lw, 6, 2);
-        ctx.fillStyle = i === 0
+        ctx!.beginPath();
+        ctx!.roundRect(bx + 14, lineY + i * 16, (w - 28) * lw, 6, 2);
+        ctx!.fillStyle = i === 0
           ? `rgba(124,58,237,${alpha * 0.85})`
           : i === 2
           ? `rgba(139,92,246,${alpha * 0.4})`
           : `rgba(255,255,255,${alpha * 0.1})`;
-        ctx.fill();
+        ctx!.fill();
       });
 
       // corner accent
-      ctx.beginPath();
-      ctx.moveTo(bx + w - 1, by + h - 20);
-      ctx.lineTo(bx + w - 1, by + h - 1);
-      ctx.lineTo(bx + w - 20, by + h - 1);
-      ctx.strokeStyle = `rgba(124,58,237,${alpha * 0.6})`;
-      ctx.lineWidth = 1.5;
-      ctx.stroke();
+      ctx!.beginPath();
+      ctx!.moveTo(bx + w - 1, by + h - 20);
+      ctx!.lineTo(bx + w - 1, by + h - 1);
+      ctx!.lineTo(bx + w - 20, by + h - 1);
+      ctx!.strokeStyle = `rgba(124,58,237,${alpha * 0.6})`;
+      ctx!.lineWidth = 1.5;
+      ctx!.stroke();
 
-      ctx.restore();
+      ctx!.restore();
     }
 
     // ── PARTICLES ──
@@ -170,64 +170,64 @@ export default function ThreeScene() {
       t += 0.016;
       scanY = (scanY + 0.8) % canvas!.height;
 
-      ctx.clearRect(0, 0, canvas!.width, canvas!.height);
+      ctx!.clearRect(0, 0, canvas!.width, canvas!.height);
 
       // Background gradient
-      const grad = ctx.createLinearGradient(0, 0, canvas!.width, canvas!.height);
+      const grad = ctx!.createLinearGradient(0, 0, canvas!.width, canvas!.height);
       grad.addColorStop(0, "#000000");
       grad.addColorStop(0.5, "#06021a");
       grad.addColorStop(1, "#000000");
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, canvas!.width, canvas!.height);
+      ctx!.fillStyle = grad;
+      ctx!.fillRect(0, 0, canvas!.width, canvas!.height);
 
       // ── WAVE MESH ──
-      ctx.save();
+      ctx!.save();
       // horizontal lines
       for (let row = 0; row < ROWS; row++) {
-        ctx.beginPath();
+        ctx!.beginPath();
         for (let col = 0; col < COLS; col++) {
           const p = getMeshPoint(col, row);
-          col === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
+          col === 0 ? ctx!.moveTo(p.x, p.y) : ctx!.lineTo(p.x, p.y);
         }
         const rowAlpha = 0.06 + Math.abs(Math.sin(row * 0.4 + t * 0.3)) * 0.06;
-        ctx.strokeStyle = `rgba(124,58,237,${rowAlpha})`;
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
+        ctx!.strokeStyle = `rgba(124,58,237,${rowAlpha})`;
+        ctx!.lineWidth = 0.5;
+        ctx!.stroke();
       }
       // vertical lines
       for (let col = 0; col < COLS; col++) {
-        ctx.beginPath();
+        ctx!.beginPath();
         for (let row = 0; row < ROWS; row++) {
           const p = getMeshPoint(col, row);
-          row === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
+          row === 0 ? ctx!.moveTo(p.x, p.y) : ctx!.lineTo(p.x, p.y);
         }
         const colAlpha = 0.04 + Math.abs(Math.sin(col * 0.35 + t * 0.25)) * 0.04;
-        ctx.strokeStyle = `rgba(124,58,237,${colAlpha})`;
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
+        ctx!.strokeStyle = `rgba(124,58,237,${colAlpha})`;
+        ctx!.lineWidth = 0.5;
+        ctx!.stroke();
       }
       // intersection dots
       for (let col = 0; col < COLS; col++) {
         for (let row = 0; row < ROWS; row++) {
           const p = getMeshPoint(col, row);
           const pulse = 0.3 + Math.sin(t * 1.2 + col * 0.6 + row * 0.4) * 0.2;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(124,58,237,${pulse * 0.5})`;
-          ctx.fill();
+          ctx!.beginPath();
+          ctx!.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
+          ctx!.fillStyle = `rgba(124,58,237,${pulse * 0.5})`;
+          ctx!.fill();
         }
       }
-      ctx.restore();
+      ctx!.restore();
 
       // ── SCAN LINE ──
-      const scanGrad = ctx.createLinearGradient(0, scanY - 60, 0, scanY + 60);
+      const scanGrad = ctx!.createLinearGradient(0, scanY - 60, 0, scanY + 60);
       scanGrad.addColorStop(0, "rgba(124,58,237,0)");
       scanGrad.addColorStop(0.4, "rgba(124,58,237,0.04)");
       scanGrad.addColorStop(0.5, "rgba(124,58,237,0.12)");
       scanGrad.addColorStop(0.6, "rgba(124,58,237,0.04)");
       scanGrad.addColorStop(1, "rgba(124,58,237,0)");
-      ctx.fillStyle = scanGrad;
-      ctx.fillRect(0, scanY - 60, canvas!.width, 120);
+      ctx!.fillStyle = scanGrad;
+      ctx!.fillRect(0, scanY - 60, canvas!.width, 120);
 
       // ── PARTICLES ──
       pts.forEach(p => {
@@ -237,10 +237,10 @@ export default function ThreeScene() {
         if (p.x > 1) p.x = 0;
         if (p.y < 0) p.y = 1;
         if (p.y > 1) p.y = 0;
-        ctx.beginPath();
-        ctx.arc(p.x * canvas!.width, p.y * canvas!.height, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(139,92,246,${p.opacity})`;
-        ctx.fill();
+        ctx!.beginPath();
+        ctx!.arc(p.x * canvas!.width, p.y * canvas!.height, p.size, 0, Math.PI * 2);
+        ctx!.fillStyle = `rgba(139,92,246,${p.opacity})`;
+        ctx!.fill();
       });
 
       // ── FRAMES ──
@@ -249,11 +249,11 @@ export default function ThreeScene() {
       // ── CENTER GLOW ──
       const cx = canvas!.width / 2;
       const cy = canvas!.height / 2;
-      const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, canvas!.width * 0.5);
+      const glow = ctx!.createRadialGradient(cx, cy, 0, cx, cy, canvas!.width * 0.5);
       glow.addColorStop(0, `rgba(124,58,237,${0.06 + Math.sin(t * 0.8) * 0.02})`);
       glow.addColorStop(1, "rgba(124,58,237,0)");
-      ctx.fillStyle = glow;
-      ctx.fillRect(0, 0, canvas!.width, canvas!.height);
+      ctx!.fillStyle = glow;
+      ctx!.fillRect(0, 0, canvas!.width, canvas!.height);
     }
 
     draw();
