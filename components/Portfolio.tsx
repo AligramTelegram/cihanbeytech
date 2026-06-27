@@ -1,0 +1,282 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
+
+const projects = [
+  {
+    num: "01",
+    title: "Luxe Boutique",
+    category: "E-Ticaret",
+    year: "2025",
+    desc: "Lüks moda markası için minimalist alışveriş deneyimi. Yüksek dönüşüm odaklı ürün sayfaları.",
+    tags: ["Next.js", "Stripe", "Framer Motion"],
+    color: "#7c3aed",
+    img: "/Ekran görüntüsü 2026-06-27 224920.png",
+    link: "#",
+  },
+  {
+    num: "02",
+    title: "Arkon Finance",
+    category: "Fintech",
+    year: "2025",
+    desc: "Fintech startup için güven ve performans odaklı landing page. %40 dönüşüm artışı.",
+    tags: ["React", "GSAP", "TypeScript"],
+    color: "#c026d3",
+    img: "/Ekran görüntüsü 2026-06-27 224952.png",
+    link: "#",
+  },
+  {
+    num: "03",
+    title: "Forma Studio",
+    category: "Mimarlık",
+    year: "2024",
+    desc: "Mimarlık stüdyosu için proje vitrin portalı. Tam ekran görseller ve akıcı navigasyon.",
+    tags: ["Next.js", "Prisma", "Vercel"],
+    color: "#7c3aed",
+    img: "/Ekran görüntüsü 2026-06-27 225023.png",
+    link: "#",
+  },
+  {
+    num: "04",
+    title: "Pulse Health",
+    category: "Sağlık",
+    year: "2024",
+    desc: "Sağlık platformu için hasta-doktor arayüzü. Karmaşık veriyi sade deneyime dönüştürme.",
+    tags: ["React", "Tailwind", "Node.js"],
+    color: "#c026d3",
+    img: "/Ekran görüntüsü 2026-06-27 225100.png",
+    link: "#",
+  },
+  {
+    num: "05",
+    title: "Nox Agency",
+    category: "Ajans",
+    year: "2024",
+    desc: "Dijital ajans için tam kapsamlı web sitesi. Awwwards nominee.",
+    tags: ["Next.js", "Three.js", "GSAP"],
+    color: "#7c3aed",
+    img: "/Ekran görüntüsü 2026-06-27 225228.png",
+    link: "#",
+  },
+  {
+    num: "06",
+    title: "Nova Brand",
+    category: "Branding",
+    year: "2024",
+    desc: "Yeni nesil marka kimliği ve web sitesi. Sıfırdan kurgulanmış dijital varlık.",
+    tags: ["Branding", "Next.js", "Motion"],
+    color: "#c026d3",
+    img: "/Screenshot.png",
+    link: "#",
+  },
+];
+
+function ProgressDot({
+  scrollYProgress, start, end, color,
+}: {
+  scrollYProgress: ReturnType<typeof useScroll>["scrollYProgress"];
+  start: number; end: number; color: string;
+}) {
+  const width = useTransform(scrollYProgress, [start, end], [8, 28]);
+  const bg = useTransform(scrollYProgress, [start, Math.min(end, 0.999)], ["#e0e0e0", color]);
+  return <motion.div style={{ width, height: 8, borderRadius: 4, background: bg }} />;
+}
+
+export default function Portfolio() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
+  const x = useTransform(scrollYProgress, [0, 1], ["0vw", `-${(projects.length - 1) * 100}vw`]);
+
+  return (
+    <section
+      id="portfolyo"
+      ref={containerRef}
+      style={{ height: `${projects.length * 100}vh`, position: "relative" }}
+    >
+      <div style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden" }}>
+
+        {/* Progress dots */}
+        <div style={{
+          position: "absolute", bottom: 40, left: "50%",
+          transform: "translateX(-50%)", zIndex: 20, display: "flex", gap: 8,
+        }}>
+          {projects.map((p, i) => (
+            <ProgressDot
+              key={i} scrollYProgress={scrollYProgress}
+              start={i / projects.length} end={(i + 1) / projects.length}
+              color={p.color}
+            />
+          ))}
+        </div>
+
+        {/* Slide track */}
+        <motion.div style={{ x, display: "flex", width: `${projects.length * 100}vw`, height: "100%" }}>
+          {projects.map((project, i) => (
+            <div
+              key={i}
+              style={{
+                width: "100vw",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                padding: "clamp(80px, 10vw, 120px) clamp(24px, 8vw, 100px)",
+                position: "relative",
+                background: "#ffffff",
+                overflow: "hidden",
+              }}
+            >
+              {/* Watermark number */}
+              <span style={{
+                position: "absolute",
+                right: "clamp(24px, 4vw, 60px)",
+                bottom: "clamp(40px, 4vw, 60px)",
+                fontFamily: "var(--font-display), sans-serif",
+                fontWeight: 900,
+                fontSize: "clamp(120px, 20vw, 260px)",
+                color: "rgba(0,0,0,0.04)",
+                lineHeight: 1, userSelect: "none", letterSpacing: "-0.05em",
+              }}>
+                {project.num}
+              </span>
+
+              {/* Section tag top-left */}
+              <div style={{
+                position: "absolute", top: "clamp(90px, 10vw, 130px)",
+                left: "clamp(24px, 8vw, 100px)",
+                display: "flex", alignItems: "center", gap: 10,
+              }}>
+                <span style={{ fontFamily: "var(--font-body), sans-serif", fontSize: 10, letterSpacing: "0.22em", textTransform: "uppercase", color: "#aaa" }}>
+                  Portföy
+                </span>
+                <div style={{ width: 28, height: 1, background: "#e0e0e0" }} />
+              </div>
+
+              {/* Content grid */}
+              <div style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                gap: "clamp(32px, 5vw, 80px)",
+                width: "100%",
+                maxWidth: 1200,
+                alignItems: "center",
+                position: "relative", zIndex: 2,
+              }}>
+                {/* Left — info */}
+                <div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 24 }}>
+                    <span style={{
+                      fontFamily: "var(--font-body), sans-serif",
+                      fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase",
+                      color: project.color, border: `1px solid ${project.color}40`,
+                      padding: "4px 12px", borderRadius: 2,
+                    }}>
+                      {project.category}
+                    </span>
+                    <span style={{ fontFamily: "var(--font-body), sans-serif", fontSize: 10, color: "#bbb", letterSpacing: "0.1em" }}>
+                      {project.year}
+                    </span>
+                  </div>
+
+                  <h2 style={{
+                    fontFamily: "var(--font-display), sans-serif",
+                    fontWeight: 900,
+                    fontSize: "clamp(40px, 6vw, 80px)",
+                    lineHeight: 0.92, letterSpacing: "-0.02em",
+                    textTransform: "uppercase", color: "#0a0a0a", marginBottom: 24,
+                  }}>
+                    {project.title}
+                  </h2>
+
+                  <p style={{
+                    fontFamily: "var(--font-body), sans-serif",
+                    fontSize: "clamp(13px, 1.2vw, 15px)",
+                    color: "#888", lineHeight: 1.8, maxWidth: 380, marginBottom: 32,
+                  }}>
+                    {project.desc}
+                  </p>
+
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 40 }}>
+                    {project.tags.map(tag => (
+                      <span key={tag} style={{
+                        fontFamily: "var(--font-body), sans-serif",
+                        fontSize: 10, color: "#999",
+                        border: "1px solid #e8e8e8",
+                        padding: "4px 12px", letterSpacing: "0.1em",
+                        textTransform: "uppercase", borderRadius: 2,
+                      }}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <div style={{ width: 32, height: 1, background: project.color }} />
+                    <span style={{
+                      fontFamily: "var(--font-body), sans-serif",
+                      fontSize: 11, color: project.color,
+                      letterSpacing: "0.14em", textTransform: "uppercase",
+                    }}>
+                      {project.num} / {String(projects.length).padStart(2,"0")}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Right — image + link */}
+                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                  <div style={{
+                    position: "relative",
+                    borderRadius: 16,
+                    overflow: "hidden",
+                    aspectRatio: "16/9",
+                    boxShadow: `0 32px 80px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.06)`,
+                  }}>
+                    <Image
+                      src={project.img}
+                      alt={project.title}
+                      fill
+                      style={{ objectFit: "cover", objectPosition: "top" }}
+                      sizes="50vw"
+                    />
+                    <div style={{
+                      position: "absolute", inset: 0,
+                      background: `linear-gradient(135deg, ${project.color}10 0%, transparent 60%)`,
+                      pointerEvents: "none",
+                    }} />
+                  </div>
+
+                  <motion.a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ x: 4 }}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 10,
+                      textDecoration: "none",
+                      fontFamily: "var(--font-body), sans-serif",
+                      fontSize: 12,
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                      color: project.color,
+                      borderBottom: `1px solid ${project.color}40`,
+                      paddingBottom: 4,
+                      width: "fit-content",
+                    }}
+                  >
+                    Siteyi Gör
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </motion.a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
