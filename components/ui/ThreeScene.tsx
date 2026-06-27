@@ -8,7 +8,7 @@ export default function ThreeScene() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas!.getContext("2d");
     if (!ctx) return;
 
     let animId: number;
@@ -16,8 +16,8 @@ export default function ThreeScene() {
     const mouse = { x: 0.5, y: 0.5 };
 
     const resize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
+      canvas!.width = canvas!.offsetWidth;
+      canvas!.height = canvas!.offsetHeight;
     };
     resize();
     window.addEventListener("resize", resize);
@@ -61,8 +61,8 @@ export default function ThreeScene() {
     ];
 
     function drawFrame(f: Frame) {
-      const bx = f.x * canvas.width;
-      const by = f.y * canvas.height + Math.sin(t * f.floatSpeed + f.floatOff) * f.floatAmp;
+      const bx = f.x * canvas!.width;
+      const by = f.y * canvas!.height + Math.sin(t * f.floatSpeed + f.floatOff) * f.floatAmp;
       const { w, h } = f;
       const r = 10;
       const barH = 30;
@@ -168,17 +168,17 @@ export default function ThreeScene() {
     function draw() {
       animId = requestAnimationFrame(draw);
       t += 0.016;
-      scanY = (scanY + 0.8) % canvas.height;
+      scanY = (scanY + 0.8) % canvas!.height;
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas!.width, canvas!.height);
 
       // Background gradient
-      const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      const grad = ctx.createLinearGradient(0, 0, canvas!.width, canvas!.height);
       grad.addColorStop(0, "#000000");
       grad.addColorStop(0.5, "#06021a");
       grad.addColorStop(1, "#000000");
       ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillRect(0, 0, canvas!.width, canvas!.height);
 
       // ── WAVE MESH ──
       ctx.save();
@@ -227,7 +227,7 @@ export default function ThreeScene() {
       scanGrad.addColorStop(0.6, "rgba(124,58,237,0.04)");
       scanGrad.addColorStop(1, "rgba(124,58,237,0)");
       ctx.fillStyle = scanGrad;
-      ctx.fillRect(0, scanY - 60, canvas.width, 120);
+      ctx.fillRect(0, scanY - 60, canvas!.width, 120);
 
       // ── PARTICLES ──
       pts.forEach(p => {
@@ -238,7 +238,7 @@ export default function ThreeScene() {
         if (p.y < 0) p.y = 1;
         if (p.y > 1) p.y = 0;
         ctx.beginPath();
-        ctx.arc(p.x * canvas.width, p.y * canvas.height, p.size, 0, Math.PI * 2);
+        ctx.arc(p.x * canvas!.width, p.y * canvas!.height, p.size, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(139,92,246,${p.opacity})`;
         ctx.fill();
       });
@@ -247,13 +247,13 @@ export default function ThreeScene() {
       frames.forEach(drawFrame);
 
       // ── CENTER GLOW ──
-      const cx = canvas.width / 2;
-      const cy = canvas.height / 2;
-      const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, canvas.width * 0.5);
+      const cx = canvas!.width / 2;
+      const cy = canvas!.height / 2;
+      const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, canvas!.width * 0.5);
       glow.addColorStop(0, `rgba(124,58,237,${0.06 + Math.sin(t * 0.8) * 0.02})`);
       glow.addColorStop(1, "rgba(124,58,237,0)");
       ctx.fillStyle = glow;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillRect(0, 0, canvas!.width, canvas!.height);
     }
 
     draw();
