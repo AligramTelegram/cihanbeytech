@@ -33,8 +33,8 @@ export default function ThreeScene() {
     const ROWS = 14;
 
     function getMeshPoint(col: number, row: number) {
-      const gx = (col / (COLS - 1)) * canvas.width;
-      const gy = (row / (ROWS - 1)) * canvas.height;
+      const gx = (col / (COLS - 1)) * canvas!.width;
+      const gy = (row / (ROWS - 1)) * canvas!.height;
       const mx = (mouse.x - 0.5) * 40;
       const my = (mouse.y - 0.5) * 25;
       const wave1 = Math.sin(t * 0.7 + col * 0.45 + row * 0.3) * 14;
