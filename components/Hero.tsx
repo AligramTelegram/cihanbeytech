@@ -181,8 +181,9 @@ export default function Hero() {
         custom={15}
         style={{
           position: "absolute",
-          bottom: 100,
-          right: "clamp(24px, 6vw, 80px)",
+          bottom: "clamp(160px, 18vh, 220px)",
+          left: "50%",
+          transform: "translateX(-50%)",
           zIndex: 20,
           display: "flex",
           flexDirection: "column",
