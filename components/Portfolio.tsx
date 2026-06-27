@@ -14,7 +14,7 @@ const projects = [
     tags: ["Next.js", "Stripe", "Framer Motion"],
     color: "#7c3aed",
     img: "/Ekran görüntüsü 2026-06-27 224920.png",
-    link: "#",
+    link: "https://popsosyal.com",
   },
   {
     num: "02",
@@ -25,7 +25,7 @@ const projects = [
     tags: ["React", "GSAP", "TypeScript"],
     color: "#c026d3",
     img: "/Ekran görüntüsü 2026-06-27 224952.png",
-    link: "#",
+    link: "https://apicalculators.com",
   },
   {
     num: "03",
@@ -36,7 +36,7 @@ const projects = [
     tags: ["Next.js", "Prisma", "Vercel"],
     color: "#7c3aed",
     img: "/Ekran görüntüsü 2026-06-27 225023.png",
-    link: "#",
+    link: "https://hemensalon.com",
   },
   {
     num: "04",
