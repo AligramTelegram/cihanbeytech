@@ -82,7 +82,8 @@ export default function Hero() {
                   lineHeight: 0.9,
                   letterSpacing: "-0.01em",
                   textTransform: "uppercase",
-                  color: i === 2 ? "#c026d3" : "#ffffff",
+                  color: i === 1 ? "transparent" : "#ffffff",
+                  WebkitTextStroke: i === 1 ? "2px #ffffff" : "none",
                   display: "block",
                   margin: 0,
                 }}
