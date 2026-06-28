@@ -3,13 +3,12 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const LINKS = ["Hakkımızda", "Süreç", "Portföy", "İletişim"];
-
-function toHref(item: string) {
-  return "#" + item.toLowerCase()
-    .replace(/ı/g,"i").replace(/ö/g,"o")
-    .replace(/ş/g,"s").replace(/ü/g,"u").replace(/ç/g,"c");
-}
+const LINKS = [
+  { label: "Hakkımızda", href: "#hakkimizda" },
+  { label: "Süreç",      href: "#surec" },
+  { label: "Portföy",    href: "#portfolyo" },
+  { label: "İletişim",   href: "#iletisim" },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -126,8 +125,8 @@ export default function Navbar() {
             <nav style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {LINKS.map((item, i) => (
                 <motion.a
-                  key={item}
-                  href={toHref(item)}
+                  key={item.href}
+                  href={item.href}
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
@@ -148,7 +147,7 @@ export default function Navbar() {
                   onMouseEnter={e => { e.currentTarget.style.color = "#7c3aed"; }}
                   onMouseLeave={e => { e.currentTarget.style.color = "#0a0a0a"; }}
                 >
-                  {item}
+                  {item.label}
                 </motion.a>
               ))}
             </nav>
