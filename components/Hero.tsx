@@ -139,7 +139,7 @@ export default function Hero() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: 8,
+          gap: 16,
         }}
       >
         <motion.div
