@@ -123,55 +123,6 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* BOTTOM INFO STRIP */}
-      <motion.div
-        variants={fadeIn}
-        initial="hidden"
-        animate="visible"
-        custom={12}
-        style={{
-          position: "relative",
-          zIndex: 10,
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-          borderTop: "1px solid rgba(255,255,255,0.08)",
-          background: "rgba(8,4,15,0.7)",
-          backdropFilter: "blur(12px)",
-        }}
-      >
-        {[
-          { label: "Ne Yapıyoruz", text: "Markanızı dijital dünyada rakipsiz bir güce dönüştürüyoruz." },
-          { label: "Misyonumuz", text: "Tasarım + Kod + Strateji ile kalıcı dijital varlık inşa etmek." },
-          { label: "Portföy", text: "50+ başarılı proje · 5+ yıl deneyim · 100% memnuniyet" },
-        ].map((item, i) => (
-          <div
-            key={item.label}
-            style={{
-              padding: "clamp(20px, 3vw, 36px) clamp(20px, 4vw, 48px)",
-              borderRight: i < 2 ? "1px solid rgba(255,255,255,0.08)" : "none",
-            }}
-          >
-            <div style={{
-              fontFamily: "var(--font-body), sans-serif",
-              fontSize: 9,
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              color: "#c026d3",
-              marginBottom: 10,
-            }}>
-              {item.label}
-            </div>
-            <div style={{
-              fontFamily: "var(--font-body), sans-serif",
-              fontSize: 12,
-              color: "rgba(255,255,255,0.5)",
-              lineHeight: 1.7,
-            }}>
-              {item.text}
-            </div>
-          </div>
-        ))}
-      </motion.div>
 
       {/* SCROLL INDICATOR */}
       <motion.div
