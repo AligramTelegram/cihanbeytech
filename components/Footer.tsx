@@ -33,7 +33,7 @@ export default function Footer() {
                 alt="cihanbeytech"
                 width={360}
                 height={72}
-                style={{ objectFit: "contain", display: "block" }}
+                style={{ objectFit: "contain", display: "block", maxWidth: "100%", height: "auto" }}
               />
               <p
                 style={{
@@ -42,7 +42,7 @@ export default function Footer() {
                   color: "var(--muted)",
                   marginTop: 12,
                   letterSpacing: "0.06em",
-                  width: 360,
+                  maxWidth: 360,
                 }}
               >
                 Dijital deneyimler inşa ediyoruz.
