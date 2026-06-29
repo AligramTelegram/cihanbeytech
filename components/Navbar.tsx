@@ -57,33 +57,18 @@ export default function Navbar() {
         {/* LEFT — empty */}
         <div />
 
-        {/* CENTER — placeholder (logo is absolute) */}
-        <div />
-
-        {/* RIGHT — logo absolute + hamburger */}
+        {/* CENTER — logo (grid col 2, auto centered) */}
         <a
           href="#"
           onClick={() => setOpen(false)}
-          style={{
-            position: "absolute",
-            left: 0,
-            right: 0,
-            top: 0,
-            bottom: 0,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            textDecoration: "none",
-            zIndex: 5,
-            pointerEvents: "none",
-          }}
+          style={{ display: "flex", alignItems: "center", textDecoration: "none" }}
         >
           <Image
             src={open || scrolled ? "/logo siyah.png" : "/logo beyaz.png"}
             alt="cihanbeytech"
             width={180}
             height={45}
-            style={{ objectFit: "contain", transition: "opacity 0.3s", pointerEvents: "auto" }}
+            style={{ objectFit: "contain", transition: "opacity 0.3s" }}
             priority
           />
         </a>
