@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 
@@ -88,6 +88,42 @@ export default function Portfolio() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
   const x = useTransform(scrollYProgress, [0, 1], ["0vw", `-${(projects.length - 1) * 100}vw`]);
+  const [isMobile, setIsMobile] = React.useState(false);
+  React.useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  if (isMobile) return (
+    <section id="portfolyo" style={{ background: "#fff", padding: "80px 24px 60px" }}>
+      <div style={{ marginBottom: 40, display: "flex", alignItems: "center", gap: 12 }}>
+        <span style={{ fontFamily: "var(--font-body), sans-serif", fontSize: 10, letterSpacing: "0.22em", textTransform: "uppercase", color: "#aaa" }}>Portföy</span>
+        <div style={{ width: 28, height: 1, background: "#e0e0e0" }} />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 48 }}>
+        {projects.map((project, i) => (
+          <div key={i} style={{ borderBottom: "1px solid #f0f0f0", paddingBottom: 48 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+              <span style={{ fontFamily: "var(--font-body), sans-serif", fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: project.color, border: `1px solid ${project.color}40`, padding: "4px 12px", borderRadius: 2 }}>{project.category}</span>
+              <span style={{ fontFamily: "var(--font-body), sans-serif", fontSize: 10, color: "#bbb" }}>{project.year}</span>
+            </div>
+            <h2 style={{ fontFamily: "var(--font-display), sans-serif", fontWeight: 900, fontSize: "clamp(32px, 8vw, 48px)", lineHeight: 0.95, textTransform: "uppercase", color: "#0a0a0a", marginBottom: 12 }}>{project.title}</h2>
+            <p style={{ fontFamily: "var(--font-body), sans-serif", fontSize: 13, color: "#888", lineHeight: 1.8, marginBottom: 20 }}>{project.desc}</p>
+            <div style={{ position: "relative", borderRadius: 12, overflow: "hidden", aspectRatio: "16/9", marginBottom: 16 }}>
+              <Image src={project.img} alt={project.title} fill style={{ objectFit: "cover", objectPosition: "top" }} sizes="100vw" />
+            </div>
+            {project.link !== "#" && (
+              <a href={project.link} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 8, textDecoration: "none", fontFamily: "var(--font-body), sans-serif", fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: project.color, borderBottom: `1px solid ${project.color}40`, paddingBottom: 4 }}>
+                Siteyi Gör <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 
   return (
     <section

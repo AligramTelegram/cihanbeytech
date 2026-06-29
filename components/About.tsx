@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const SLIDES = [
@@ -50,6 +50,36 @@ export default function About() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
   const x = useTransform(scrollYProgress, [0, 1], ["0vw", `-${(SLIDES.length - 1) * 100}vw`]);
+  const [isMobile, setIsMobile] = React.useState(false);
+  React.useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  if (isMobile) return (
+    <section id="hakkimizda" style={{ background: "#fff", padding: "80px 24px 60px" }}>
+      {SLIDES.map((slide, i) => (
+        <div key={i} style={{ marginBottom: 60, paddingBottom: 60, borderBottom: i < SLIDES.length - 1 ? "1px solid #f0f0f0" : "none" }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 20 }}>
+            <span style={{ width: 8, height: 8, borderRadius: "50%", background: slide.accent, display: "inline-block" }} />
+            <span style={{ fontFamily: "var(--font-body), sans-serif", fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: slide.accent }}>{slide.tag}</span>
+          </div>
+          <h2 style={{ fontFamily: "var(--font-display), sans-serif", fontWeight: 900, fontSize: "clamp(36px, 10vw, 60px)", lineHeight: 0.95, letterSpacing: "-0.02em", textTransform: "uppercase", color: "#0a0a0a", marginBottom: 20, whiteSpace: "pre-line" }}>{slide.title}</h2>
+          <p style={{ fontFamily: "var(--font-body), sans-serif", fontSize: 14, color: "#666", lineHeight: 1.8, marginBottom: 32 }}>{slide.body}</p>
+          <div style={{ display: "flex", gap: 32 }}>
+            {slide.stats.map(s => (
+              <div key={s.l}>
+                <div style={{ fontFamily: "var(--font-display), sans-serif", fontWeight: 900, fontSize: 40, color: slide.accent, lineHeight: 1 }}>{s.v}</div>
+                <div style={{ fontFamily: "var(--font-body), sans-serif", fontSize: 11, color: "#aaa", letterSpacing: "0.12em", textTransform: "uppercase", marginTop: 4 }}>{s.l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </section>
+  );
 
   return (
     <section
