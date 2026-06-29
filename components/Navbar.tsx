@@ -64,7 +64,8 @@ export default function Navbar() {
           style={{
             position: "absolute",
             left: "50%",
-            transform: "translateX(-50%)",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
             display: "flex",
             alignItems: "center",
             textDecoration: "none",
