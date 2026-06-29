@@ -57,8 +57,19 @@ export default function Navbar() {
         {/* LEFT — empty */}
         <div />
 
-        {/* LOGO — center */}
-        <a href="#" style={{ display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }} onClick={() => setOpen(false)}>
+        {/* LOGO — absolute center */}
+        <a
+          href="#"
+          onClick={() => setOpen(false)}
+          style={{
+            position: "absolute",
+            left: "50%",
+            transform: "translateX(-50%)",
+            display: "flex",
+            alignItems: "center",
+            textDecoration: "none",
+          }}
+        >
           <Image
             src={open || scrolled ? "/logo siyah.png" : "/logo beyaz.png"}
             alt="cihanbeytech"
