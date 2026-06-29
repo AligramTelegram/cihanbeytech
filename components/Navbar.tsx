@@ -57,7 +57,10 @@ export default function Navbar() {
         {/* LEFT — empty */}
         <div />
 
-        {/* CENTER — logo */}
+        {/* CENTER — placeholder (logo is absolute) */}
+        <div />
+
+        {/* RIGHT — logo absolute + hamburger */}
         <a
           href="#"
           onClick={() => setOpen(false)}
