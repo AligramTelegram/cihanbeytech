@@ -81,7 +81,7 @@ export default function Navbar() {
         </a>
 
         {/* RIGHT — hamburger */}
-        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <div style={{ display: "flex", justifyContent: "flex-end", position: "relative", zIndex: 10 }}>
         <button
           onClick={() => setOpen(!open)}
           aria-label="Menü"
