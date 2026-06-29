@@ -54,39 +54,8 @@ export default function Navbar() {
           transition: "background 0.3s, border-color 0.3s, box-shadow 0.3s",
         }}
       >
-        {/* LEFT — hamburger */}
-        <div style={{ display: "flex", justifyContent: "flex-start", position: "relative", zIndex: 10 }}>
-        <button
-          onClick={() => setOpen(!open)}
-          aria-label="Menü"
-          style={{
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            padding: "8px",
-            display: "flex",
-            flexDirection: "column",
-            gap: 5,
-            zIndex: 210,
-          }}
-        >
-          <motion.span
-            animate={open ? { rotate: 45, y: 9 } : { rotate: 0, y: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            style={{ display: "block", width: 24, height: 1.5, background: iconColor, transformOrigin: "center", transition: "background 0.3s" }}
-          />
-          <motion.span
-            animate={open ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.2 }}
-            style={{ display: "block", width: 24, height: 1.5, background: iconColor, transition: "background 0.3s" }}
-          />
-          <motion.span
-            animate={open ? { rotate: -45, y: -9 } : { rotate: 0, y: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            style={{ display: "block", width: 24, height: 1.5, background: iconColor, transformOrigin: "center", transition: "background 0.3s" }}
-          />
-        </button>
-        </div>
+        {/* LEFT — empty */}
+        <div />
 
         {/* CENTER — logo */}
         <a
@@ -112,8 +81,39 @@ export default function Navbar() {
           />
         </a>
 
-        {/* RIGHT — empty */}
-        <div />
+        {/* RIGHT — hamburger */}
+        <div style={{ display: "flex", justifyContent: "flex-end", position: "relative", zIndex: 10 }}>
+          <button
+            onClick={() => setOpen(!open)}
+            aria-label="Menü"
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: "8px",
+              display: "flex",
+              flexDirection: "column",
+              gap: 5,
+              zIndex: 210,
+            }}
+          >
+            <motion.span
+              animate={open ? { rotate: 45, y: 9 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              style={{ display: "block", width: 24, height: 1.5, background: iconColor, transformOrigin: "center", transition: "background 0.3s" }}
+            />
+            <motion.span
+              animate={open ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+              transition={{ duration: 0.2 }}
+              style={{ display: "block", width: 24, height: 1.5, background: iconColor, transition: "background 0.3s" }}
+            />
+            <motion.span
+              animate={open ? { rotate: -45, y: -9 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              style={{ display: "block", width: 24, height: 1.5, background: iconColor, transformOrigin: "center", transition: "background 0.3s" }}
+            />
+          </button>
+        </div>
       </motion.nav>
 
       {/* FULLSCREEN MENU */}
