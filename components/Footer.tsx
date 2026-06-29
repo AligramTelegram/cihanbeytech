@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Marquee from "./ui/Marquee";
 import { fadeIn } from "@/lib/animations";
 
@@ -27,19 +28,13 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-12">
             {/* logo + tagline */}
             <div>
-              <div
-                style={{
-                  fontFamily: "'Syne', sans-serif",
-                  fontWeight: 800,
-                  fontSize: "clamp(36px, 5vw, 64px)",
-                  letterSpacing: "-0.05em",
-                  lineHeight: 0.95,
-                  color: "var(--text)",
-                }}
-              >
-                cihanbeyt
-                <span style={{ color: "var(--accent)" }}>ech</span>
-              </div>
+              <Image
+                src="/logo siyah.png"
+                alt="cihanbeytech"
+                width={220}
+                height={44}
+                style={{ objectFit: "contain", display: "block" }}
+              />
               <p
                 style={{
                   fontFamily: "var(--font-body), sans-serif",
@@ -155,16 +150,13 @@ export default function Footer() {
             >
               © 2025 cihanbeytech. Tüm hakları saklıdır.
             </span>
-            <span
-              style={{
-                fontFamily: "var(--font-body), sans-serif",
-                fontSize: 10,
-                color: "var(--muted)",
-                letterSpacing: "0.06em",
-              }}
-            >
-              Istanbul, Turkey
-            </span>
+            <Image
+              src="/icon siyah.png"
+              alt="cihanbeytech icon"
+              width={28}
+              height={28}
+              style={{ objectFit: "contain", opacity: 0.4 }}
+            />
           </div>
         </div>
       </motion.div>
