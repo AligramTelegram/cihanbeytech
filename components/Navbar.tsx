@@ -54,34 +54,8 @@ export default function Navbar() {
           transition: "background 0.3s, border-color 0.3s, box-shadow 0.3s",
         }}
       >
-        {/* LEFT — empty */}
-        <div />
-
-        {/* LOGO — absolute center */}
-        <a
-          href="#"
-          onClick={() => setOpen(false)}
-          style={{
-            position: "absolute",
-            left: "50%",
-            transform: "translateX(-50%)",
-            display: "flex",
-            alignItems: "center",
-            textDecoration: "none",
-          }}
-        >
-          <Image
-            src={open || scrolled ? "/logo siyah.png" : "/logo beyaz.png"}
-            alt="cihanbeytech"
-            width={180}
-            height={45}
-            style={{ objectFit: "contain", transition: "opacity 0.3s" }}
-            priority
-          />
-        </a>
-
-        {/* RIGHT — hamburger */}
-        <div style={{ display: "flex", justifyContent: "flex-end", position: "relative", zIndex: 10 }}>
+        {/* LEFT — hamburger */}
+        <div style={{ display: "flex", justifyContent: "flex-start", position: "relative", zIndex: 10 }}>
         <button
           onClick={() => setOpen(!open)}
           aria-label="Menü"
@@ -113,6 +87,33 @@ export default function Navbar() {
           />
         </button>
         </div>
+
+        {/* CENTER — logo */}
+        <a
+          href="#"
+          onClick={() => setOpen(false)}
+          style={{
+            position: "absolute",
+            left: "50%",
+            transform: "translateX(-50%)",
+            display: "flex",
+            alignItems: "center",
+            textDecoration: "none",
+            zIndex: 5,
+          }}
+        >
+          <Image
+            src={open || scrolled ? "/logo siyah.png" : "/logo beyaz.png"}
+            alt="cihanbeytech"
+            width={180}
+            height={45}
+            style={{ objectFit: "contain", transition: "opacity 0.3s" }}
+            priority
+          />
+        </a>
+
+        {/* RIGHT — empty */}
+        <div />
       </motion.nav>
 
       {/* FULLSCREEN MENU */}
