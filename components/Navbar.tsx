@@ -44,7 +44,6 @@ export default function Navbar() {
           zIndex: 200,
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
           padding: "0 clamp(24px, 6vw, 80px)",
           height: 64,
           background: scrolled && !open ? "rgba(255,255,255,0.92)" : "transparent",
@@ -54,33 +53,25 @@ export default function Navbar() {
           transition: "background 0.3s, border-color 0.3s, box-shadow 0.3s",
         }}
       >
-        {/* CENTER — logo (absolute center) */}
-        <a
-          href="#"
-          onClick={() => setOpen(false)}
-          style={{
-            position: "absolute",
-            left: "50%",
-            top: "50%",
-            transform: "translate(-50%,-50%)",
-            display: "flex",
-            alignItems: "center",
-            textDecoration: "none",
-            zIndex: 1,
-          }}
-        >
-          <Image
-            src={open || scrolled ? "/logo siyah.png" : "/logo beyaz.png"}
-            alt="cihanbeytech"
-            width={160}
-            height={36}
-            style={{ objectFit: "contain", transition: "opacity 0.3s" }}
-            priority
-          />
-        </a>
+        {/* LEFT — spacer same width as hamburger */}
+        <div style={{ width: 40 }} />
+
+        {/* CENTER — logo */}
+        <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
+          <a href="#" onClick={() => setOpen(false)} style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
+            <Image
+              src={open || scrolled ? "/logo siyah.png" : "/logo beyaz.png"}
+              alt="cihanbeytech"
+              width={160}
+              height={36}
+              style={{ objectFit: "contain", transition: "opacity 0.3s" }}
+              priority
+            />
+          </a>
+        </div>
 
         {/* RIGHT — hamburger */}
-        <div style={{ display: "flex", alignItems: "center", marginLeft: "auto", zIndex: 10 }}>
+        <div style={{ display: "flex", alignItems: "center", zIndex: 10 }}>
           <button
             onClick={() => setOpen(!open)}
             aria-label="Menü"
