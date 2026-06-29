@@ -31,9 +31,9 @@ export default function Footer() {
               <Image
                 src="/logo siyah.png"
                 alt="cihanbeytech"
-                width={360}
-                height={72}
-                style={{ objectFit: "contain", display: "block", maxWidth: "100%", height: "auto" }}
+                width={1941}
+                height={286}
+                style={{ display: "block", width: "clamp(200px, 30vw, 360px)", height: "auto" }}
               />
               <p
                 style={{
@@ -42,7 +42,7 @@ export default function Footer() {
                   color: "var(--muted)",
                   marginTop: 12,
                   letterSpacing: "0.06em",
-                  maxWidth: 360,
+                  width: "clamp(200px, 30vw, 360px)",
                 }}
               >
                 Dijital deneyimler inşa ediyoruz.
