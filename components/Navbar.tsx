@@ -164,9 +164,7 @@ export default function Navbar() {
               <span style={{ fontFamily: "var(--font-body), sans-serif", fontSize: 11, color: "#aaa", letterSpacing: "0.1em" }}>
                 © 2025 cihanbeytech
               </span>
-              <span style={{ fontFamily: "var(--font-body), sans-serif", fontSize: 11, color: "#aaa", letterSpacing: "0.1em" }}>
-                Istanbul, TR
-              </span>
+              <Image src="/icon siyah.png" alt="icon" width={24} height={24} style={{ objectFit: "contain", opacity: 0.35 }} />
             </motion.div>
           </motion.div>
         )}
