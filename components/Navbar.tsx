@@ -45,7 +45,8 @@ export default function Navbar() {
           display: "flex",
           alignItems: "center",
           padding: "0 clamp(24px, 6vw, 80px)",
-          height: 64,
+          height: 72,
+          minHeight: 72,
           background: scrolled && !open ? "rgba(255,255,255,0.92)" : "transparent",
           borderBottom: scrolled && !open ? "1px solid #e8e8e8" : "1px solid transparent",
           boxShadow: scrolled && !open ? "0 2px 24px rgba(0,0,0,0.06)" : "none",
@@ -63,8 +64,8 @@ export default function Navbar() {
               src={open || scrolled ? "/logo siyah.png" : "/logo beyaz.png"}
               alt="cihanbeytech"
               width={220}
-              height={36}
-              style={{ objectFit: "contain", transition: "opacity 0.3s" }}
+              height={44}
+              style={{ objectFit: "contain", transition: "opacity 0.3s", display: "block" }}
               priority
             />
           </a>
