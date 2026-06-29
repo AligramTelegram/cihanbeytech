@@ -31,8 +31,8 @@ export default function Footer() {
               <Image
                 src="/logo siyah.png"
                 alt="cihanbeytech"
-                width={220}
-                height={44}
+                width={360}
+                height={72}
                 style={{ objectFit: "contain", display: "block" }}
               />
               <p
