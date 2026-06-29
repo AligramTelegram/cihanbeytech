@@ -47,7 +47,6 @@ export default function Navbar() {
           alignItems: "center",
           padding: "0 clamp(24px, 6vw, 80px)",
           height: 64,
-          position: "relative",
           background: scrolled && !open ? "rgba(255,255,255,0.92)" : "transparent",
           borderBottom: scrolled && !open ? "1px solid #e8e8e8" : "1px solid transparent",
           boxShadow: scrolled && !open ? "0 2px 24px rgba(0,0,0,0.06)" : "none",
@@ -67,13 +66,16 @@ export default function Navbar() {
           onClick={() => setOpen(false)}
           style={{
             position: "absolute",
-            left: "50%",
-            top: "50%",
-            transform: "translate(-50%, -50%)",
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
             display: "flex",
             alignItems: "center",
+            justifyContent: "center",
             textDecoration: "none",
             zIndex: 5,
+            pointerEvents: "none",
           }}
         >
           <Image
@@ -81,7 +83,7 @@ export default function Navbar() {
             alt="cihanbeytech"
             width={180}
             height={45}
-            style={{ objectFit: "contain", transition: "opacity 0.3s" }}
+            style={{ objectFit: "contain", transition: "opacity 0.3s", pointerEvents: "auto" }}
             priority
           />
         </a>
