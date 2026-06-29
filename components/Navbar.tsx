@@ -42,9 +42,9 @@ export default function Navbar() {
           left: 0,
           right: 0,
           zIndex: 200,
-          display: "grid",
-          gridTemplateColumns: "1fr auto 1fr",
+          display: "flex",
           alignItems: "center",
+          justifyContent: "space-between",
           padding: "0 clamp(24px, 6vw, 80px)",
           height: 64,
           background: scrolled && !open ? "rgba(255,255,255,0.92)" : "transparent",
@@ -54,27 +54,33 @@ export default function Navbar() {
           transition: "background 0.3s, border-color 0.3s, box-shadow 0.3s",
         }}
       >
-        {/* LEFT — empty */}
-        <div />
-
-        {/* CENTER — logo (grid col 2, auto centered) */}
+        {/* CENTER — logo (absolute center) */}
         <a
           href="#"
           onClick={() => setOpen(false)}
-          style={{ display: "flex", alignItems: "center", textDecoration: "none" }}
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%,-50%)",
+            display: "flex",
+            alignItems: "center",
+            textDecoration: "none",
+            zIndex: 1,
+          }}
         >
           <Image
             src={open || scrolled ? "/logo siyah.png" : "/logo beyaz.png"}
             alt="cihanbeytech"
-            width={180}
-            height={45}
+            width={160}
+            height={36}
             style={{ objectFit: "contain", transition: "opacity 0.3s" }}
             priority
           />
         </a>
 
         {/* RIGHT — hamburger */}
-        <div style={{ display: "flex", justifyContent: "flex-end", position: "relative", zIndex: 10 }}>
+        <div style={{ display: "flex", alignItems: "center", marginLeft: "auto", zIndex: 10 }}>
           <button
             onClick={() => setOpen(!open)}
             aria-label="Menü"
