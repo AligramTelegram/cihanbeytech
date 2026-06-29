@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const LINKS = [
   { label: "Hakkımızda", href: "#hakkimizda" },
@@ -58,14 +59,14 @@ export default function Navbar() {
 
         {/* LOGO — center */}
         <a href="#" style={{ display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }} onClick={() => setOpen(false)}>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}>
-            <span style={{ fontFamily: "var(--font-display), sans-serif", fontWeight: 900, fontSize: 34, letterSpacing: "-0.02em", textTransform: "lowercase", color: open ? "#0a0a0a" : textColor, transition: "color 0.3s", lineHeight: 1 }}>
-              cihanbeytech.
-            </span>
-            <span style={{ fontFamily: "var(--font-body), sans-serif", fontSize: 10, color: open ? "#888" : scrolled ? "#888" : "rgba(255,255,255,0.45)", letterSpacing: "0.06em", transition: "color 0.3s" }}>
-              Dijital deneyimler inşa ediyoruz.
-            </span>
-          </div>
+          <Image
+            src={open || scrolled ? "/logo siyah.png" : "/logo beyaz.png"}
+            alt="cihanbeytech"
+            width={180}
+            height={45}
+            style={{ objectFit: "contain", transition: "opacity 0.3s" }}
+            priority
+          />
         </a>
 
         {/* RIGHT — hamburger */}

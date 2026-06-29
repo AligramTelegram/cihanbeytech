@@ -58,8 +58,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/Adsız tasarım (1).png",
-    apple: "/Adsız tasarım (1).png",
+    icon: "/icon siyah.png",
+    apple: "/icon siyah.png",
   },
 };
 
