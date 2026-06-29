@@ -47,6 +47,7 @@ export default function Navbar() {
           alignItems: "center",
           padding: "0 clamp(24px, 6vw, 80px)",
           height: 64,
+          position: "relative",
           background: scrolled && !open ? "rgba(255,255,255,0.92)" : "transparent",
           borderBottom: scrolled && !open ? "1px solid #e8e8e8" : "1px solid transparent",
           boxShadow: scrolled && !open ? "0 2px 24px rgba(0,0,0,0.06)" : "none",
