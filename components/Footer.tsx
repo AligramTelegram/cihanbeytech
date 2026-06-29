@@ -42,6 +42,7 @@ export default function Footer() {
                   color: "var(--muted)",
                   marginTop: 12,
                   letterSpacing: "0.06em",
+                  width: 360,
                 }}
               >
                 Dijital deneyimler inşa ediyoruz.
