@@ -95,7 +95,7 @@ export default function Portfolio() {
       ref={containerRef}
       style={{ height: `${projects.length * 100}vh`, position: "relative" }}
     >
-      <div style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden" }}>
+      <div style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden", transform: "translateZ(0)" }}>
 
         {/* Progress dots */}
         <div style={{
@@ -112,7 +112,7 @@ export default function Portfolio() {
         </div>
 
         {/* Slide track */}
-        <motion.div style={{ x, display: "flex", width: `${projects.length * 100}vw`, height: "100%" }}>
+        <motion.div style={{ x, display: "flex", width: `${projects.length * 100}vw`, height: "100%", willChange: "transform" }}>
           {projects.map((project, i) => (
             <div
               key={i}

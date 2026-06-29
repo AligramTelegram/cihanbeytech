@@ -57,7 +57,7 @@ export default function About() {
       ref={containerRef}
       style={{ height: `${SLIDES.length * 100}vh`, position: "relative" }}
     >
-      <div style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden" }}>
+      <div style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden", transform: "translateZ(0)" }}>
 
         {/* Section label */}
         <div style={{
@@ -87,7 +87,7 @@ export default function About() {
         </div>
 
         {/* Slide track */}
-        <motion.div style={{ x, display: "flex", width: `${SLIDES.length * 100}%`, height: "100%" }}>
+        <motion.div style={{ x, display: "flex", width: `${SLIDES.length * 100}%`, height: "100%", willChange: "transform" }}>
           {SLIDES.map((slide, i) => (
             <div
               key={i}
