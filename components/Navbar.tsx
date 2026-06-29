@@ -62,7 +62,7 @@ export default function Navbar() {
             <Image
               src={open || scrolled ? "/logo siyah.png" : "/logo beyaz.png"}
               alt="cihanbeytech"
-              width={160}
+              width={220}
               height={36}
               style={{ objectFit: "contain", transition: "opacity 0.3s" }}
               priority
