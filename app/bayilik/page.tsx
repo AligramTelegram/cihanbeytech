@@ -18,20 +18,13 @@ const PACKAGES = [
     commission: "%25 komisyon",
     color: "#c026d3",
   },
-  {
-    name: "Meta Reklam Yönetimi",
-    desc: "Aylık reklam yönetim hizmeti",
-    price: "3.000₺ – 6.000₺ / ay",
-    commission: "%20 komisyon (aylık, tekrarlayan)",
-    color: "#7c3aed",
-  },
 ];
 
 const STEPS = [
   {
     num: "01",
     title: "Müşteri Bul",
-    desc: "Çevrende web sitesine veya reklam yönetimine ihtiyacı olan işletme sahiplerine ulaş. Kuaför, salon, klinik, e-ticaret — her sektörden olabilir.",
+    desc: "Çevrende web sitesine ihtiyacı olan işletme sahiplerine ulaş. Kuaför, salon, klinik, e-ticaret — her sektörden olabilir.",
   },
   {
     num: "02",
@@ -123,8 +116,8 @@ export default function BayilikPage() {
             maxWidth: 560,
           }}
         >
-          cihanbeytech için müşteri getir, teknik işi bize bırak. Web sitesi ve reklam yönetimi
-          satışlarında %20-25 komisyon kazan — teslimat, kalite ve destek tamamen bizim sorumluluğumuzda.
+          cihanbeytech için müşteri getir, teknik işi bize bırak. Web sitesi satışlarında
+          %25 komisyon kazan — teslimat, kalite ve destek tamamen bizim sorumluluğumuzda.
         </motion.p>
       </section>
 
